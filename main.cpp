@@ -23,7 +23,7 @@ Here is my code:
 #include <iomanip>
 #include <string>
 
-using namespace std;
+//  using namespace std;  /* TODO: Don't use this! */
 
 const int CWIDTH = 26;
 
@@ -41,40 +41,57 @@ int main() {
   choice = 0;
   while (choice != 3) {
     std::cout << menu << std::endl;
-    cin >> choice;
+    std::cin >> choice;
 
     if (choice < 3) {
       std::cout << "  Starting temp: ";
       std::cout.flush();
-      cin >> starting;
+      std::cin >> starting;
       std::cout << "  Ending temp: ";
       std::cout.flush();
-      cin >> endvalue;
+      std::cin >> endvalue;
       std::cout << "  Increment: ";
       std::cout.flush();
-      cin >> incrementvalue;
+      std::cin >> incrementvalue;
     }
   
     switch (choice) {
     case 1:
-      cout << "Fahrenheit" << setw(17) << "Celsius" << endl;
+      std::cout << "Fahrenheit" << std::setw(17)
+                << "Celsius" << std::endl;
       for (double calcCelsius = starting; calcCelsius <= endvalue;  calcCelsius += incrementvalue)
       {
         convertFoC = (5.0 / 9.0) * (calcCelsius - 32.0);
-        cout << showpoint << fixed << setprecision(2) << calcCelsius
-             << setprecision(2) << setw(21) << convertFoC << right;
-        cout << endl;
+        std::cout << std::showpoint
+                  << std::fixed
+                  << std::setprecision(2)
+                  << calcCelsius
+                  << std::setprecision(2)
+                  << std::setw(21)
+                  << convertFoC
+                  << std::right;
+        std::cout << std::endl;
       }
       break;
   
     case 2:
-      cout << "Celsius" << setw(CWIDTH) << "Fahrenheit\n";
+      std::cout << "Celsius"
+                << std::setw(CWIDTH)
+                << "Fahrenheit\n";
       for (double calcFahrenheit = starting; calcFahrenheit <= endvalue;  calcFahrenheit += incrementvalue)
       {
         converCtoF = ((9.0 / 5.0) * calcFahrenheit) + 32.0;
-        cout << setw(CWIDTH) << showpoint << fixed << setprecision(1) << calcFahrenheit
-             << fixed << setprecision(1) << setw(CWIDTH) << converCtoF << right;
-        cout << endl;
+        std::cout << std::setw(CWIDTH)
+                  << std::showpoint
+                  << std::fixed
+                  << std::setprecision(1)
+                  << calcFahrenheit
+                  << std::fixed
+                  << std::setprecision(1)
+                  << std::setw(CWIDTH)
+                  << converCtoF
+                  << std::right;
+        std::cout << std::endl;
       }
 
     case 3:
